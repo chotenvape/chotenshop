@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "../../lib/supabase";
+import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
-import { isAdmin } from "../../lib/isAdmin";
+import { isAdmin } from "@/lib/isAdmin";
 
 export default function LoginPage() {
   const router = useRouter();
