@@ -60,36 +60,45 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-pink-50 via-white to-pink-50">
 
-      {/* 헤더 */}
       <Header />
 
-      {/* 배너 */}
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-6xl px-3">
         <Banner />
       </div>
 
-      {/* 전체 컨텐츠 */}
-      <div className="mx-auto flex max-w-6xl flex-col items-center px-4 py-8">
+      {/* 모바일 컨테이너 */}
+      <div className="mx-auto flex max-w-6xl flex-col items-center px-3 py-6">
 
         {/* 타이틀 */}
-        <h1 className="mt-4 text-center text-4xl font-extrabold text-pink-500 drop-shadow-sm">
+        <h1 className="text-center text-3xl font-extrabold text-pink-500">
           🛍️ CHOTEN SHOP
         </h1>
 
-        <p className="mt-2 text-center text-gray-500">
-          원하는 전자담배 제품을 빠르게 찾아보세요
+        <p className="mt-1 text-center text-sm text-gray-500">
+          원하는 제품을 빠르게 찾아보세요
         </p>
 
-        {/* 카테고리 */}
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        {/* 검색 */}
+        <div className="mt-5 w-full">
+          <input
+            type="text"
+            placeholder="상품 검색..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full rounded-2xl border border-pink-200 px-4 py-3 text-center text-sm shadow-sm outline-none focus:border-pink-500"
+          />
+        </div>
+
+        {/* 카테고리 (모바일 스크롤 대응) */}
+        <div className="mt-5 flex w-full gap-2 overflow-x-auto pb-2">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setCategory(cat)}
-              className={`rounded-full px-6 py-2 text-sm font-bold transition shadow-sm ${
+              className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-bold transition ${
                 category === cat
-                  ? "bg-pink-500 text-white scale-105"
-                  : "bg-white text-pink-500 border border-pink-200 hover:bg-pink-100"
+                  ? "bg-pink-500 text-white"
+                  : "bg-white text-pink-500 border border-pink-200"
               }`}
             >
               {cat}
@@ -97,33 +106,20 @@ export default function Home() {
           ))}
         </div>
 
-        {/* 검색 */}
-        <div className="mt-6 w-full max-w-md">
-          <input
-            type="text"
-            placeholder="상품 이름 검색..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-full border border-pink-200 px-5 py-3 text-center shadow-sm outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
-          />
-        </div>
-
-        {/* 상품 영역 */}
-        <div className="mt-10 w-full">
-          <h2 className="mb-6 text-center text-2xl font-bold text-pink-500">
+        {/* 상품 */}
+        <div className="mt-6 w-full">
+          <h2 className="mb-4 text-center text-lg font-bold text-pink-500">
             상품 목록
           </h2>
 
           {filtered.length === 0 ? (
-            <p className="text-center text-gray-400">
-              상품이 없습니다 😢
-            </p>
+            <p className="text-center text-gray-400">상품이 없습니다 😢</p>
           ) : (
-            <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3">
               {filtered.map((product) => (
                 <div
                   key={product.id}
-                  className="transition hover:-translate-y-1 hover:scale-[1.02]"
+                  className="active:scale-95 transition"
                 >
                   <ProductCard
                     id={product.id}
