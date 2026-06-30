@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../lib/supabase";
 import Link from "next/link";
 
 export default function Header() {
@@ -43,7 +43,7 @@ export default function Header() {
         {/* 오른쪽 메뉴 */}
         <div className="flex items-center gap-3">
 
-          {/* 🛒 장바구니 (로그인일 때만 보임) */}
+          {/* 장바구니 */}
           {user && (
             <>
               <Link href="/cart">
@@ -52,7 +52,6 @@ export default function Header() {
                 </button>
               </Link>
 
-              {/* 🔥 추가: 주문내역 */}
               <Link href="/orders">
                 <button className="rounded-full bg-pink-500 px-5 py-2 text-white transition hover:bg-pink-600">
                   📦 주문내역
@@ -61,6 +60,7 @@ export default function Header() {
             </>
           )}
 
+          {/* 로그인/회원가입 or 로그아웃 */}
           {!user ? (
             <>
               <Link href="/login">

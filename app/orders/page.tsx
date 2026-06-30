@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../lib/supabase";
 import { useRouter } from "next/navigation";
 
 export default function OrdersPage() {
@@ -69,7 +69,7 @@ export default function OrdersPage() {
 
       <div className="mx-auto max-w-3xl">
 
-        {/* 🔙 뒤로가기 추가 */}
+        {/* 뒤로가기 */}
         <button
           onClick={() => router.back()}
           className="mb-4 rounded-full bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow hover:bg-gray-100 transition"

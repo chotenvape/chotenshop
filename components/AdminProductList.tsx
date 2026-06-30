@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../lib/supabase";
 
 type Product = {
   id: number;
@@ -67,7 +67,7 @@ export default function AdminProductList() {
               <h3 className="text-xl font-bold">{product.name}</h3>
 
               <p className="text-pink-500 font-bold">
-                ₩ {product.price.toLocaleString()}
+                ₩ {Number(product.price).toLocaleString()}
               </p>
             </div>
 

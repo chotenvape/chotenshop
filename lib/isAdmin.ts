@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../lib/supabase";
 
 export async function isAdmin() {
   const { data } = await supabase.auth.getUser();

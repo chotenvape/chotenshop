@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Banner from "../components/Banner";
-import ProductCard from "../components/ProductCard";
-import { supabase } from "@/lib/supabase";
+import Header from "../../components/Header";
+import Banner from "../../components/Banner";
+import ProductCard from "../../components/ProductCard";
+import { supabase } from "../../lib/supabase";
 
 type Product = {
   id: number;
@@ -23,10 +23,15 @@ export default function Home() {
   const [search, setSearch] = useState("");
 
   async function loadProducts() {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("products")
       .select("*")
       .order("id", { ascending: false });
+
+    if (error) {
+      console.error(error.message);
+      return;
+    }
 
     setProducts(data || []);
     setFiltered(data || []);
@@ -41,9 +46,7 @@ export default function Home() {
 
     // 카테고리 필터
     if (category !== "전체") {
-      result = result.filter(
-        (p) => p.category === category
-      );
+      result = result.filter((p) => p.category === category);
     }
 
     // 검색 필터
@@ -61,7 +64,7 @@ export default function Home() {
       <Header />
       <Banner />
 
-      {/* 🔥 카테고리 버튼 */}
+      {/* 카테고리 */}
       <div className="mx-auto mt-6 flex max-w-7xl flex-wrap gap-2 px-4">
         {categories.map((cat) => (
           <button
@@ -78,7 +81,7 @@ export default function Home() {
         ))}
       </div>
 
-      {/* 🔍 검색창 */}
+      {/* 검색 */}
       <div className="mx-auto mt-4 max-w-7xl px-4">
         <input
           type="text"
@@ -89,7 +92,7 @@ export default function Home() {
         />
       </div>
 
-      {/* 🛒 상품 목록 */}
+      {/* 상품 목록 */}
       <section className="mx-auto max-w-7xl px-4 py-10">
         <h2 className="mb-6 text-2xl font-bold text-pink-500">
           상품 목록

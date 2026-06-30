@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { supabaseServer } from "@/lib/supabase-server";
+import { supabaseServer } from "../../../lib/supabase-server";
 import BuyButton from "../../../components/BuyButton";
 
 type Props = {
@@ -27,7 +27,7 @@ export default async function ProductDetailPage({ params }: Props) {
       <div className="mx-auto max-w-6xl rounded-3xl bg-white p-8 shadow-xl">
         <div className="grid gap-10 md:grid-cols-2">
 
-          {/* 🖼 이미지 */}
+          {/* 이미지 */}
           <div className="overflow-hidden rounded-3xl border border-pink-100">
             <Image
               src={product.image}
@@ -38,7 +38,7 @@ export default async function ProductDetailPage({ params }: Props) {
             />
           </div>
 
-          {/* 📦 정보 */}
+          {/* 정보 */}
           <div>
             <h1 className="text-4xl font-extrabold text-pink-500">
               {product.name}
@@ -68,7 +68,7 @@ export default async function ProductDetailPage({ params }: Props) {
               </p>
             </div>
 
-            {/* 🛒 BuyButton */}
+            {/* 구매 버튼 */}
             <BuyButton notice={product.notice} product={product} />
           </div>
 

@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../lib/supabase";
 
 export default async function LogsPage() {
   const { data: products } = await supabase
@@ -9,7 +9,7 @@ export default async function LogsPage() {
   return (
     <main className="min-h-screen bg-pink-50 p-10">
       <div className="mx-auto max-w-5xl">
-        
+
         <h1 className="mb-8 text-4xl font-bold text-pink-500">
           📋 상품 로그
         </h1>
@@ -21,7 +21,7 @@ export default async function LogsPage() {
               className="rounded-2xl bg-white p-5 shadow-md"
             >
               <div className="flex justify-between">
-                
+
                 <div>
                   <h2 className="text-xl font-bold">{item.name}</h2>
                   <p className="text-gray-500">

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../lib/supabase";
 import { useRouter } from "next/navigation";
-import { isAdmin } from "@/lib/isAdmin";
+import { isAdmin } from "../../lib/isAdmin";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -26,7 +26,7 @@ export default function LoginPage() {
       return;
     }
 
-    // 🔥 관리자 체크
+    // 관리자 체크
     const admin = await isAdmin();
 
     alert("로그인 성공!");
@@ -45,7 +45,7 @@ export default function LoginPage() {
 
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
 
-        {/* 🔙 뒤로가기 추가 */}
+        {/* 뒤로가기 */}
         <button
           onClick={() => router.back()}
           className="mb-4 text-sm font-semibold text-gray-600 hover:text-black transition"

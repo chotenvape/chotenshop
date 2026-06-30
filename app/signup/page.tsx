@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../lib/supabase";
 import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
@@ -35,7 +35,7 @@ export default function SignupPage() {
 
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
 
-        {/* 🔙 뒤로가기 추가 */}
+        {/* 뒤로가기 */}
         <button
           onClick={() => router.back()}
           className="mb-4 text-sm font-semibold text-gray-600 hover:text-black"

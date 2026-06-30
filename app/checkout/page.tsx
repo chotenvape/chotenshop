@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../lib/supabase";
 
 export default function CheckoutPage() {
   const [cart, setCart] = useState<any[]>([]);
@@ -9,7 +9,6 @@ export default function CheckoutPage() {
   const [done, setDone] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  // 🧾 입력값
   const [name, setName] = useState("");
   const [depositor, setDepositor] = useState("");
   const [address, setAddress] = useState("");
@@ -53,7 +52,6 @@ export default function CheckoutPage() {
     }
 
     try {
-      // 1️⃣ 주문 생성
       const { data: orderData, error } = await supabase
         .from("orders")
         .insert([
@@ -75,7 +73,6 @@ export default function CheckoutPage() {
         return;
       }
 
-      // 2️⃣ 주문 상품 저장
       const orderItems = cart.map((item) => ({
         order_id: orderData.id,
         product_name: item.name,
@@ -85,7 +82,6 @@ export default function CheckoutPage() {
 
       await supabase.from("order_items").insert(orderItems);
 
-      // 3️⃣ 장바구니 삭제
       await supabase.from("cart").delete().eq("user_id", user.id);
 
       setTotalPrice(total);
@@ -104,14 +100,12 @@ export default function CheckoutPage() {
 
       <div className="bg-white p-6 rounded-3xl shadow-xl w-full max-w-md">
 
-        {/* 🔴 테스트용 (무조건 화면 확인용) */}
         <h1 className="text-center text-2xl font-bold text-pink-500 mb-4">
           CHECKOUT PAGE
         </h1>
 
         {!done ? (
           <>
-            {/* 🧾 입력창 */}
             <div className="space-y-3">
 
               <input
@@ -137,12 +131,10 @@ export default function CheckoutPage() {
 
             </div>
 
-            {/* 💰 총액 */}
             <p className="mt-4 text-center font-bold">
               총 금액: {total.toLocaleString()}원
             </p>
 
-            {/* 🔘 버튼 */}
             <button
               onClick={order}
               disabled={loading}

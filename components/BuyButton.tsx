@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
-import Link from "next/link";
+import { supabase } from "../../lib/supabase";
 
 export default function BuyButton({ notice, product }: any) {
   const [qty, setQty] = useState(1);
@@ -40,7 +39,7 @@ export default function BuyButton({ notice, product }: any) {
   return (
     <div className="mt-10 space-y-6 font-sans">
 
-      {/* 🧮 수량 */}
+      {/* 수량 */}
       <div className="flex items-center justify-between rounded-2xl border border-pink-100 bg-white px-5 py-4 shadow-sm">
 
         <span className="text-sm font-medium text-gray-600">
@@ -70,7 +69,7 @@ export default function BuyButton({ notice, product }: any) {
         </div>
       </div>
 
-      {/* 📦 구매 안내 */}
+      {/* 구매 안내 */}
       <div className="rounded-2xl bg-pink-50 px-5 py-4 text-sm text-gray-700 leading-relaxed">
         <p className="mb-1 font-semibold text-pink-500">
           구매 안내
@@ -78,7 +77,7 @@ export default function BuyButton({ notice, product }: any) {
         {notice}
       </div>
 
-      {/* 🛒 장바구니 버튼 */}
+      {/* 장바구니 버튼 */}
       <button
         onClick={addToCart}
         className="w-full rounded-2xl bg-gradient-to-r from-pink-500 to-pink-400 py-4 text-lg font-bold text-white shadow-md transition hover:opacity-90 active:scale-[0.98]"
@@ -86,7 +85,7 @@ export default function BuyButton({ notice, product }: any) {
         장바구니 담기
       </button>
 
-      {/* 🔙 뒤로가기 (하단 추가) */}
+      {/* 뒤로가기 */}
       <button
         onClick={() => router.back()}
         className="w-full rounded-2xl bg-gray-100 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-200 transition"
