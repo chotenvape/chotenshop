@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Banner from "../components/Banner";
-import ProductCard from "../components/ProductCard";
-import { supabase } from "../lib/supabase";
+import Header from "@/components/Header";
+import Banner from "@/components/Banner";
+import ProductCard from "@/components/ProductCard";
+import { supabase } from "@/lib/supabase";
 
 type Product = {
   id: number;
