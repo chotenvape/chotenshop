@@ -8,7 +8,7 @@ export default function Banner() {
           src="/hero.webp"
           alt="메인 배너"
           width={350}
-          height={75}
+          height={125}
           priority
           className="w-full rounded-3xl shadow-xl"
         />

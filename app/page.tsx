@@ -70,7 +70,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-pink-50 via-white to-pink-50 pb-20">
+    <main className="min-h-screen bg-gradient-to-b from-pink-50 via-white to-pink-50 pb-24">
 
       {/* 헤더 */}
       <Header />
@@ -139,10 +139,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 💖 하단 네비바 (핵심 추가 부분) */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-pink-100 bg-white/90 backdrop-blur-md shadow-lg md:hidden">
+      {/* 💖🔥 하단 네비바 (절대 안 깨지는 구조) */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-pink-100 bg-white/95 backdrop-blur-md shadow-lg md:hidden">
 
-        <div className="mx-auto flex max-w-md justify-between px-4 py-2">
+        {/* 🔥 핵심: 무조건 가로 유지 */}
+        <div className="flex w-full items-center justify-around py-2">
 
           {navItems.map((item) => {
             const active = pathname === item.href;
@@ -151,10 +152,11 @@ export default function Home() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex flex-1 flex-col items-center"
+                className="flex flex-col items-center justify-center flex-1"
               >
+
                 <div
-                  className={`text-xl transition ${
+                  className={`text-xl leading-none transition ${
                     active ? "text-pink-500 scale-110" : "text-gray-400"
                   }`}
                 >
@@ -162,12 +164,13 @@ export default function Home() {
                 </div>
 
                 <span
-                  className={`text-[10px] font-bold ${
+                  className={`mt-1 text-[10px] font-bold ${
                     active ? "text-pink-500" : "text-gray-400"
                   }`}
                 >
                   {item.label}
                 </span>
+
               </Link>
             );
           })}
